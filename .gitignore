@@ -1,0 +1,78 @@
+## Build Results
+bin/
+obj/
+out/
+[Ll]og/
+[Bb]uild/
+artifacts/
+
+## User-specific files
+*.user
+*.userosscache
+*.suo
+*.sln.docstates
+*.userprefs
+
+## Visual Studio
+.vs/
+.vscode/
+
+## JetBrains Rider
+.idea/
+*.sln.iml
+
+## ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+## Auto-generated files
+Generated_Code/
+*.g.cs
+*.g.i.cs
+*.AssemblyAttributes.cs
+
+## Razor & Temp files
+*.RazorTargetExtension.*
+*.cshtml.cs
+*.cshtml.g.cs
+*.cshtml.g.i.cs
+
+## Publish & Deployment
+publish/
+*.publish.xml
+
+## Logs
+*.log
+*.nlog
+*.serilog
+
+## Secrets & config
+secrets.json
+appsettings.Development.json
+appsettings.Local.json
+.env
+
+## NuGet
+*.nupkg
+*.snupkg
+.nuget/
+packages/
+project.lock.json
+project.assets.json
+project.nuget.cache
+*.nuspec
+
+## dotnet watch / hot reload
+*.hotreload*
+
+## Templating
+/.template.config/
+
+## Others
+Thumbs.db
+desktop.ini
+*.swp
+*.tmp
+*.bak
+*.orig
+*.rej
+*.dbmdl

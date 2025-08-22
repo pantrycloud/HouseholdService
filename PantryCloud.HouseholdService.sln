@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PantryCloud.HouseholdService.Presentation", "PantryCloud.HouseholdService.Presentation\PantryCloud.HouseholdService.Presentation.csproj", "{C794EE55-8820-4433-8C3F-ECB1C6584C3F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PantryCloud.HouseholdService.Infrastructure", "PantryCloud.HouseholdService.Infrastructure\PantryCloud.HouseholdService.Infrastructure.csproj", "{8E1CD665-A5DE-4E82-A411-946C4262F034}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PantryCloud.HouseholdService.Core", "PantryCloud.HouseholdService.Core\PantryCloud.HouseholdService.Core.csproj", "{1F9E430E-5BAE-4734-825A-38CBAAC3197C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PantryCloud.HouseholdService.Application", "PantryCloud.HouseholdService.Application\PantryCloud.HouseholdService.Application.csproj", "{8325651D-3827-4A34-BE43-9A8ABCF6E2A7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C794EE55-8820-4433-8C3F-ECB1C6584C3F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C794EE55-8820-4433-8C3F-ECB1C6584C3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C794EE55-8820-4433-8C3F-ECB1C6584C3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C794EE55-8820-4433-8C3F-ECB1C6584C3F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E1CD665-A5DE-4E82-A411-946C4262F034}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E1CD665-A5DE-4E82-A411-946C4262F034}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E1CD665-A5DE-4E82-A411-946C4262F034}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E1CD665-A5DE-4E82-A411-946C4262F034}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F9E430E-5BAE-4734-825A-38CBAAC3197C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F9E430E-5BAE-4734-825A-38CBAAC3197C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F9E430E-5BAE-4734-825A-38CBAAC3197C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F9E430E-5BAE-4734-825A-38CBAAC3197C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8325651D-3827-4A34-BE43-9A8ABCF6E2A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8325651D-3827-4A34-BE43-9A8ABCF6E2A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8325651D-3827-4A34-BE43-9A8ABCF6E2A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8325651D-3827-4A34-BE43-9A8ABCF6E2A7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

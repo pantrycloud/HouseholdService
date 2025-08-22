@@ -1,0 +1,32 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\PantryCloud.HouseholdService.Application\PantryCloud.HouseholdService.Application.csproj" />
+      <ProjectReference Include="..\PantryCloud.HouseholdService.Core\PantryCloud.HouseholdService.Core.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="ErrorOr" Version="2.0.1" />
+      <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="9.0.8" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.8" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.8">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      </PackageReference>
+      <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.8">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      </PackageReference>
+      <PackageReference Include="Microsoft.Extensions.Configuration" Version="9.0.8" />
+      <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="9.0.8" />
+      <PackageReference Include="Microsoft.Extensions.Logging" Version="9.0.8" />
+      <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.0.4" />
+    </ItemGroup>
+
+</Project>
