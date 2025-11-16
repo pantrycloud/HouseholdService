@@ -72,5 +72,5 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: |
-            samanekj/HouseholdService:${{ steps.gitversion.outputs.semVer }}
-            samanekj/HouseholdService:latest
+            samanekj/householdservice:${{ steps.gitversion.outputs.semVer }}
+            samanekj/householdservice:latest
