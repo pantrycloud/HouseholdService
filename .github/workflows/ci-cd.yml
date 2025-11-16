@@ -1,0 +1,76 @@
+name: CI/CD - HouseholdService
+
+on:
+  push:
+    branches:
+      - develop
+  pull_request:
+    branches:
+      - develop
+
+jobs:
+  ci:
+    name: Build & Test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '9.0.x'
+
+      - name: Restore dependencies
+        run: dotnet restore PantryCloud.HouseholdService.sln
+
+      - name: Build
+        run: dotnet build PantryCloud.HouseholdService.sln --no-restore --configuration Release
+
+      - name: Run Tests
+        run: dotnet test PantryCloud.HouseholdService.sln --no-build --configuration Release --logger trx
+
+  cd:
+    name: Build & Push Docker image
+    needs: ci
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Docker Build
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Extract short SHA
+        id: vars
+        run: echo "SHORT_SHA=$(echo $GITHUB_SHA | cut -c1-7)" >> $GITHUB_ENV
+
+      - name: Install GitVersion
+        uses: gittools/actions/gitversion/setup@v4.1.0
+        with:
+          versionSpec: '6.3.x'
+
+      - name: Generate GitVersion variables
+        id: gitversion
+        uses: gittools/actions/gitversion/execute@v4.1.0
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: ./Dockerfile
+          push: true
+          tags: |
+            samanekj/HouseholdService:${{ steps.gitversion.outputs.semVer }}
+            samanekj/HouseholdService:latest
