@@ -63,5 +63,19 @@ public class HouseholdController(IMediator mediator, IMapper mapper) : ApiContro
         
         return FromResult(result, StatusCodes.Status200OK);
     }
+    
+    [Authorize]
+    [HttpPost("leave")]
+    [ProducesResponseType(typeof(LeaveHouseholdResponseDto), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesResponseType(StatusCodes.Status403Forbidden)]
+    public async Task<IActionResult> LeaveHousehold(LeaveHouseholdRequestDto request,
+        CancellationToken cancellationToken)
+    {
+        var command = Mapper.Map<LeaveHouseholdCommand>(request);
+        var result = await Mediator.Send(command, cancellationToken);
+        
+        return FromResult(result, StatusCodes.Status200OK);
+    }
 
 }

@@ -73,4 +73,56 @@ public class HouseholdService(HouseholdDbContext dbContext, IUserContext userCon
 
         return new CreateHouseholdResponseDto(household.Id, household.Name);
     }
+    
+    public async Task<ErrorOr<LeaveHouseholdResponseDto>> LeaveHousehold(LeaveHouseholdRequestDto request, CancellationToken cancellationToken)
+    {
+        var userId = userContext.UserId;
+
+        logger.LogInformation("User {UserId} requested to leave household", userId);
+
+        var member = await dbContext.Members
+            .FirstOrDefaultAsync(m => m.UserId == userId, cancellationToken);
+
+        if (member is null)
+        {
+            logger.LogWarning("User {UserId} is not a member of any household", userId);
+            return HouseholdErrors.UserNotInAnyHousehold;
+        }
+
+        var householdId = member.HouseholdId;
+
+        var membersInHousehold = await dbContext.Members
+            .Where(m => m.HouseholdId == householdId)
+            .ToListAsync(cancellationToken);
+
+        // User is the only member → delete household and member
+        if (membersInHousehold.Count == 1)
+        {
+            dbContext.Members.Remove(member);
+
+            var household = await dbContext.Households.FirstOrDefaultAsync(h => h.Id == householdId, cancellationToken);
+            if (household is not null)
+            {
+                dbContext.Households.Remove(household);
+            }
+
+            logger.LogInformation("User {UserId} was the only member. Household deleted.", userId);
+        }
+        // User is owner but not the only member → can't leave
+        else if (member.Role == HouseholdRole.Owner)
+        {
+            logger.LogWarning("Owner {UserId} cannot leave household with other members present", userId);
+            return HouseholdErrors.OwnerCannotLeave;
+        }
+        // Normal case: user is member/admin and can leave
+        else
+        {
+            dbContext.Members.Remove(member);
+            logger.LogInformation("User {UserId} left the household", userId);
+        }
+
+        await dbContext.SaveChangesAsync(cancellationToken);
+
+        return new LeaveHouseholdResponseDto();
+    }
 }

@@ -8,4 +8,14 @@ public static class HouseholdErrors
         code: "Household.Creation.UserAlreadyInHousehold",
         description: "User is a member of a household and cannot create a new one."
     );
+
+    public static Error UserNotInAnyHousehold => Error.NotFound(
+        code: "Household.Creation.UserNotInAnyHousehold",
+        description: "User is not in any household."
+    );
+
+    public static Error OwnerCannotLeave => Error.Forbidden(
+        code:  "Household.Owner.CannotLeave",
+        description: "Owner is a member of a household and cannot leave."
+    );
 }
