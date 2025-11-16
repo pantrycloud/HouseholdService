@@ -19,8 +19,6 @@ RUN dotnet restore src/PantryCloud.HouseholdService.Presentation/PantryCloud.Hou
 # Copy the rest of the source code
 COPY . .
 
-COPY secrets /secrets
-
 # Build 
 WORKDIR /src/src/PantryCloud.HouseholdService.Presentation
 RUN dotnet build PantryCloud.HouseholdService.Presentation.csproj -c $BUILD_CONFIGURATION -o /app/build
