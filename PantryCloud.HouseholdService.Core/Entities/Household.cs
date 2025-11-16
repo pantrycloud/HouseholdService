@@ -2,9 +2,9 @@ namespace PantryCloud.HouseholdService.Core.Entities;
 
 public class Household
 {
-    public Guid Id { get; set; }
-    public string Name { get; set; } = default!;
+    public Guid Id { get; init; }
+    public string Name { get; init; } = default!;
 
-    public ICollection<HouseholdMember> Members { get; set; } = new List<HouseholdMember>();
-    public ICollection<HouseholdInvitation> Invitations { get; set; } = new List<HouseholdInvitation>();
+    public ICollection<HouseholdMember> Members { get; init; } = new List<HouseholdMember>();
+    public ICollection<HouseholdInvitation> Invitations { get; init; } = new List<HouseholdInvitation>();
 }

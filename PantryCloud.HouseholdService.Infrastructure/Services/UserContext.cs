@@ -5,16 +5,25 @@ using PantryCloud.HouseholdService.Application;
 
 namespace PantryCloud.HouseholdService.Infrastructure.Services;
 
-public sealed class UserContext(IHttpContextAccessor httpContextAccessor) : IUserContext
+public sealed class UserContext : IUserContext
 {
-    private readonly ClaimsPrincipal? _user = httpContextAccessor.HttpContext?.User;
+    private readonly ClaimsPrincipal _user;
+
+    public UserContext(IHttpContextAccessor httpContextAccessor)
+    {
+        var context = httpContextAccessor.HttpContext
+                      ?? throw new UnauthorizedAccessException("No HttpContext found");
+
+        _user = context.User ?? throw new UnauthorizedAccessException("User not authenticated");
+    }
 
     public Guid UserId =>
-        Guid.TryParse(_user?.FindFirstValue(ClaimTypes.NameIdentifier) ?? 
-                      _user?.FindFirstValue(JwtRegisteredClaimNames.Sub), out var id)
+        Guid.TryParse(_user.FindFirstValue(ClaimTypes.NameIdentifier) ??
+                      _user.FindFirstValue(JwtRegisteredClaimNames.Sub), out var id)
             ? id
             : throw new UnauthorizedAccessException("User ID not found in token");
 
-    public string? Email =>
-        _user?.FindFirstValue(JwtRegisteredClaimNames.Email);
+    public string Email =>
+        _user.FindFirstValue(ClaimTypes.Email)
+        ?? throw new UnauthorizedAccessException("Email not found in token");
 }

@@ -1,7 +1,5 @@
 namespace PantryCloud.HouseholdService.Application.Dtos;
 
-public record HouseholdDto(Guid Id, string Name);
-
 public record CreateHouseholdRequestDto(string Name);
 
 public record CreateHouseholdResponseDto(Guid Id, string Name);

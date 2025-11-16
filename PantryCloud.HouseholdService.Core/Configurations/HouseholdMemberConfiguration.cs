@@ -13,6 +13,10 @@ public class HouseholdMemberConfiguration : IEntityTypeConfiguration<HouseholdMe
         builder.Property(m => m.UserId).IsRequired();
         builder.Property(m => m.JoinedAt).IsRequired();
 
+        builder.Property(m => m.Role)
+            .HasConversion<string>()
+            .IsRequired();
+
         builder.HasIndex(m => m.UserId).IsUnique(); // One household per user
     }
 }

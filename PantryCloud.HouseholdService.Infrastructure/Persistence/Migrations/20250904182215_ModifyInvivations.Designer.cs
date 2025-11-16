@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using PantryCloud.HouseholdService.Infrastructure.Persistence;
@@ -11,9 +12,11 @@ using PantryCloud.HouseholdService.Infrastructure.Persistence;
 namespace PantryCloud.HouseholdService.Infrastructure.Persistence.Migrations
 {
     [DbContext(typeof(HouseholdDbContext))]
-    partial class HouseholdDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250904182215_ModifyInvivations")]
+    partial class ModifyInvivations
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -83,9 +86,8 @@ namespace PantryCloud.HouseholdService.Infrastructure.Persistence.Migrations
                     b.Property<DateTime>("JoinedAt")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<string>("Role")
-                        .IsRequired()
-                        .HasColumnType("text");
+                    b.Property<int>("Role")
+                        .HasColumnType("integer");
 
                     b.Property<Guid>("UserId")
                         .HasColumnType("uuid");

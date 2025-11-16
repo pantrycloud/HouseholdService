@@ -38,6 +38,7 @@ public static class ServiceCollectionExtensions
         
         services.AddScoped<IUserContext, UserContext>();
         services.AddScoped<IHouseholdService, Services.HouseholdService>();
+        services.AddScoped<IInvitationService, InvitationService>();
         
         return services;
     }

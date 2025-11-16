@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using PantryCloud.HouseholdService.Core.Configurations;
 using PantryCloud.HouseholdService.Core.Entities;
 
 namespace PantryCloud.HouseholdService.Infrastructure.Persistence;
@@ -11,7 +12,7 @@ public class HouseholdDbContext(DbContextOptions<HouseholdDbContext> options) : 
     
     protected override void OnModelCreating(ModelBuilder builder)
     {
-        builder.ApplyConfigurationsFromAssembly(typeof(Household).Assembly);
+        builder.ApplyConfigurationsFromAssembly(typeof(HouseholdConfiguration).Assembly);
 
         base.OnModelCreating(builder);
     }

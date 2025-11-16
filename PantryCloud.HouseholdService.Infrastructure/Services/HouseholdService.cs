@@ -16,7 +16,7 @@ public class HouseholdService(HouseholdDbContext dbContext, IUserContext userCon
     {
         var userId = userContext.UserId;
 
-        logger.LogInformation($"Getting current household for {userId}");
+        logger.LogInformation("Getting current household for {UserId}", userId);
         
         var household = await dbContext.Households
             .Where(h => h.Members.Any(m => m.UserId == userId))
@@ -24,11 +24,11 @@ public class HouseholdService(HouseholdDbContext dbContext, IUserContext userCon
 
         if (household is null)
         {
-            logger.LogInformation($"Household for {userId} not found");
+            logger.LogInformation("Household for {UserId} not found", userId);
             return Error.NotFound("Household.NotFound", "Household not found");
         }
         
-        logger.LogInformation($"Got current household for {userId}");
+        logger.LogInformation("Got current household for {UserId}", userId);
 
         return new GetCurrentHouseholdResponseDto(household.Id, household.Name);
     }
@@ -37,17 +37,18 @@ public class HouseholdService(HouseholdDbContext dbContext, IUserContext userCon
     {
         var userId = userContext.UserId;
 
-        logger.LogInformation($"Creating household for {userId}");
+        logger.LogInformation("Creating household for {UserId}", userId);
         
         var alreadyMember = await dbContext.Members
             .AnyAsync(m => m.UserId == userId, cancellationToken);
 
         if (alreadyMember)
         {
-            logger.LogInformation($"Household for {userId} already exists");
+            logger.LogInformation("Household for {UserId} already exists", userId);
             return HouseholdErrors.UserAlreadyInHousehold;
         }
 
+        // Create new entities
         var household = new Household
         {
             Id = Guid.NewGuid(),
@@ -68,7 +69,7 @@ public class HouseholdService(HouseholdDbContext dbContext, IUserContext userCon
 
         await dbContext.SaveChangesAsync(cancellationToken);
         
-        logger.LogInformation($"Created household for {userId}");
+        logger.LogInformation("Created household for {UserId}", userId);
 
         return new CreateHouseholdResponseDto(household.Id, household.Name);
     }

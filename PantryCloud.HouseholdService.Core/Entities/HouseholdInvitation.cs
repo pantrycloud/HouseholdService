@@ -2,10 +2,14 @@ namespace PantryCloud.HouseholdService.Core.Entities;
 
 public class HouseholdInvitation
 {
-    public Guid Id { get; set; }
-    public Guid HouseholdId { get; set; }
+    public Guid Id { get; init; }
+    public required Guid HouseholdId { get; init; }
+    public required string Code { get; init; }
+    public required string Email { get; init; }
+    public required DateTime ExpiresAt { get; init; }
+    public DateTime? UsedAt { get; set; }
+    
+    public bool IsExpired => DateTime.UtcNow > ExpiresAt;
 
-    public string Code { get; set; } = default!;
-    public DateTime ExpiresAt { get; set; }
-    public bool IsUsed { get; set; }
+    public bool IsUsed => UsedAt.HasValue;
 }

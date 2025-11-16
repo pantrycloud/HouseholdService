@@ -11,13 +11,9 @@ public class HouseholdInvitationConfiguration : IEntityTypeConfiguration<Househo
         builder.HasKey(i => i.Id);
 
         builder.Property(i => i.Code)
-            .IsRequired()
-            .HasMaxLength(20);
-
-        builder.Property(i => i.ExpiresAt)
             .IsRequired();
-
-        builder.Property(i => i.IsUsed)
+        
+        builder.Property(i => i.ExpiresAt)
             .IsRequired();
 
         builder.HasIndex(i => i.Code)
