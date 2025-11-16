@@ -1,4 +1,4 @@
-dotmode: ContinuousDeployment
+mode: ContinuousDeployment
 
 branches:
   develop:
