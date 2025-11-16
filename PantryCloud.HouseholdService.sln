@@ -13,6 +13,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PantryCloud.HouseholdServic
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PantryCloud.HouseholdService.Presentation", "src\PantryCloud.HouseholdService.Presentation\PantryCloud.HouseholdService.Presentation.csproj", "{2F24A09E-619F-4D5C-A131-A5BEE9EF0627}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{0C88DD14-F956-CE84-757C-A364CCF449FC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PantryCloud.HouseholdService.UnitTests", "test\PantryCloud.HouseholdService.UnitTests\PantryCloud.HouseholdService.UnitTests.csproj", "{758B3C69-8329-4EB9-A860-6922417DBA7E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -71,6 +75,18 @@ Global
 		{2F24A09E-619F-4D5C-A131-A5BEE9EF0627}.Release|x64.Build.0 = Release|Any CPU
 		{2F24A09E-619F-4D5C-A131-A5BEE9EF0627}.Release|x86.ActiveCfg = Release|Any CPU
 		{2F24A09E-619F-4D5C-A131-A5BEE9EF0627}.Release|x86.Build.0 = Release|Any CPU
+		{758B3C69-8329-4EB9-A860-6922417DBA7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{758B3C69-8329-4EB9-A860-6922417DBA7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{758B3C69-8329-4EB9-A860-6922417DBA7E}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{758B3C69-8329-4EB9-A860-6922417DBA7E}.Debug|x64.Build.0 = Debug|Any CPU
+		{758B3C69-8329-4EB9-A860-6922417DBA7E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{758B3C69-8329-4EB9-A860-6922417DBA7E}.Debug|x86.Build.0 = Debug|Any CPU
+		{758B3C69-8329-4EB9-A860-6922417DBA7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{758B3C69-8329-4EB9-A860-6922417DBA7E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{758B3C69-8329-4EB9-A860-6922417DBA7E}.Release|x64.ActiveCfg = Release|Any CPU
+		{758B3C69-8329-4EB9-A860-6922417DBA7E}.Release|x64.Build.0 = Release|Any CPU
+		{758B3C69-8329-4EB9-A860-6922417DBA7E}.Release|x86.ActiveCfg = Release|Any CPU
+		{758B3C69-8329-4EB9-A860-6922417DBA7E}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -80,5 +96,6 @@ Global
 		{6932DB7F-D5B8-4575-AF5F-5CE5110E2727} = {827E0CD3-B72D-47B6-A68D-7590B98EB39B}
 		{E80B7ACA-C5AA-4707-A39E-036257051F14} = {827E0CD3-B72D-47B6-A68D-7590B98EB39B}
 		{2F24A09E-619F-4D5C-A131-A5BEE9EF0627} = {827E0CD3-B72D-47B6-A68D-7590B98EB39B}
+		{758B3C69-8329-4EB9-A860-6922417DBA7E} = {0C88DD14-F956-CE84-757C-A364CCF449FC}
 	EndGlobalSection
 EndGlobal
