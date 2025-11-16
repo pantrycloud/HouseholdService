@@ -10,7 +10,7 @@ using PantryCloud.HouseholdService.Infrastructure.Persistence;
 
 namespace PantryCloud.HouseholdService.Infrastructure.Services;
 
-public class HouseholdService(HouseholdDbContext dbContext, IUserContext userContext, ILogger<HouseholdService> logger) : IHouseholdService
+public class HouseholdManagementService(HouseholdDbContext dbContext, IUserContext userContext, ILogger<HouseholdManagementService> logger) : IHouseholdManagementService
 {
     public async Task<ErrorOr<GetCurrentHouseholdResponseDto>> GetCurrentHousehold(CancellationToken cancellationToken)
     {

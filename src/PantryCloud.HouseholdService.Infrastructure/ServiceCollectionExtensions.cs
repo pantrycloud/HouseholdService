@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using PantryCloud.HouseholdService.Application;
+using PantryCloud.HouseholdService.Core;
 using PantryCloud.HouseholdService.Infrastructure.Persistence;
 using PantryCloud.HouseholdService.Infrastructure.Services;
 
@@ -13,6 +14,10 @@ public static class ServiceCollectionExtensions
 {
     public static IServiceCollection AddInfrastructureLayerServices(this IServiceCollection services, IConfiguration configuration)
     {
+        var apiConfiguration = new ApiConfiguration();
+        configuration.Bind(apiConfiguration);
+        services.AddSingleton(apiConfiguration);
+        
         services.AddDbContext<HouseholdDbContext>(options =>
             options.UseNpgsql(configuration.GetConnectionString("DefaultConnection")));
         
@@ -37,7 +42,7 @@ public static class ServiceCollectionExtensions
         services.AddHttpContextAccessor();
         
         services.AddScoped<IUserContext, UserContext>();
-        services.AddScoped<IHouseholdService, Services.HouseholdService>();
+        services.AddScoped<IHouseholdManagementService, Services.HouseholdManagementService>();
         services.AddScoped<IInvitationService, InvitationService>();
         
         return services;
